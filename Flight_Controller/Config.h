@@ -3,14 +3,8 @@
 
 // Wi-Fi Credentials
 
-#define WIFI_SSID "Stage V(ericu)"
-#define WIFI_PASSWORD "parolaelamata"
-
-//#define WIFI_SSID "Casa_Mica"
-//#define WIFI_PASSWORD "C3q7nKp4xD"
-
-//#define WIFI_SSID "DIGI_f94868"
-//#define WIFI_PASSWORD "a7ee06b7"
+#define WIFI_SSID ""
+#define WIFI_PASSWORD ""
 
 #define DSHOT_THROTTLE_MIN 100
 #define DSHOT_THROTTLE_MAX 2047

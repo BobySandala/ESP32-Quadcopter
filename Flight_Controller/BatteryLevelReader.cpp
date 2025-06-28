@@ -18,13 +18,13 @@ void readBatteryLevel() {
   // pin neconectat
   if (rawVoltage == 0.0)  {  } 
   // nivel scazut
-  else if (batteryVoltage < 11.8) {  }
+  else if (batteryVoltage < 12) { digitalWrite(LOW_BATTERY_PIN, HIGH); }
   // nivel normal
-  else {  }
+  else { digitalWrite(LOW_BATTERY_PIN, LOW); }
 }
 // initializeaza led-ul si creaza task-ul
 void batteryReaderInit() {
-  
+  pinMode(LOW_BATTERY_PIN, OUTPUT);
   xTaskCreatePinnedToCore(
     batteryLevelTask,         // functie
     "BatteryLevelTask",       // nume

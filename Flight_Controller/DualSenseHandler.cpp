@@ -21,6 +21,7 @@ int16_t rawR2 = 0;
 
 void initDualSenseController() {
     Serial.begin(115200);
+    pinMode(BT_CONN_PIN, OUTPUT);
     delay(500);
     Serial.println(F("DualSense Controller Setup"));
     
@@ -52,7 +53,8 @@ void initDualSenseController() {
 void updateDualSenseController(void* params) {
     while (1)
     {
-        if (ps5.isConnected()) { updateControllerInputStruct(); printControllerData(); }
+        if (ps5.isConnected()) { updateControllerInputStruct(); printControllerData(); digitalWrite(BT_CONN_PIN, HIGH); }
+        else { digitalWrite(BT_CONN_PIN, LOW); }
         vTaskDelay(20);
     }
 }

@@ -24,7 +24,7 @@ REGULATOR_DATA yawRegulatorExtern, altitudeRegulatorExtern;
 void PIDBegin() {
   // Initialize flight data handler first
   flightData.begin();
-  
+  pinMode(GYRO_LED_PIN, OUTPUT);
   // regulatorul intern
   // seteaza cheia fiecarui regulator si valorile minime si maxime
   rollRegulatorIntern.key     = "ROLL"; // ROLL
@@ -90,6 +90,7 @@ void PIDBegin() {
     &internRegulatorTaskHandle, // handle
     0                     // core 0 (moved to different core than sensors)
   );
+  digitalWrite(GYRO_LED_PIN, HIGH);
 }
 
 // actualizeaza PID-urile de viteza unghiulara
