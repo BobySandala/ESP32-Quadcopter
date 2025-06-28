@@ -3,7 +3,7 @@
 #include "UdpHandler.h"
 #include "BatteryLevelReader.h"
 
-#define NETWORK_CONNECTION true // false pentru a opri comunicatia Wi-Fi
+#define NETWORK_CONNECTION false // false pentru a opri comunicatia Wi-Fi
 
 void sendRegDataAsJson(String reg);  // trimite json cu valorile regulatorului ales
 String createJson(); // creeazaun json cu toate datele necesare transmiterii udp

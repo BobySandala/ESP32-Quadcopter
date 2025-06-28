@@ -6,8 +6,7 @@
 CONTROLLER_INPUT ControllerInputData;
 
 // Configuration constants
-const bool PAIR_CONTROLLER_WHILE_SETUP = false;
-const bool DEBUG_PRINT = false;
+const bool DEBUG_PRINT = true;
 
 void printValueIfDebugPrint(String s, int16_t value);
 void updateControllerInputStruct();
@@ -62,13 +61,13 @@ void updateDualSenseController(void* params) {
 
 void updateControllerInputStruct() {
     // Map analog sticks from raw values (-32768 to 32767) to float (-1.0 to 1.0)
-    ControllerInputData.StickX = ps5.LStickX();
-    ControllerInputData.StickY = ps5.LStickY();
-    ControllerInputData.StickRX = ps5.RStickX();
+    ControllerInputData.StickX = ps5.LStickX() / 128.0;
+    ControllerInputData.StickY = ps5.LStickY() / 128.0;
+    ControllerInputData.StickRX = ps5.RStickX() / 128.0;
     
     // Map triggers from raw values (0 to 255) to float (0.0 to 1.0)
-    ControllerInputData.Throttle = ps5.R2();  // R2 as throttle
-    ControllerInputData.Brake = ps5.L2();     // L2 as brake
+    ControllerInputData.Throttle = ps5.R2Value() / 256;  // R2 as throttle
+    ControllerInputData.Brake = ps5.L2Value() / 256;     // L2 as brake
     
     // Apply deadzone to sticks (optional - removes small unwanted movements)
     const float deadzone = 0.1f;
